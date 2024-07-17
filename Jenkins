@@ -1,16 +1,41 @@
 pipeline{
-  agent any
-  Stages{
-    stage('Hostaname'){
-      steps{
-       hostname
-      }
-    }
-    stage('Top'){
-      steps{
-        top | head -10
-      }
-    }
-  }
+    agent any
+    stages{
+        stage('Hostname'){
+            steps {
+                sh '''
+                    hostname
+                '''  
+            }
+        }
+        stage('Server details'){
+            steps{
+                sh '''
+                    uname -a
+                '''
+            }
+        }
+        stage('memory details'){
+            steps{
+                sh '''
+                    free -h
+                '''    
+            }
+        }
+        stage('disk details'){
+            steps{
+                sh '''
+                df -kh 
+                '''
+            }
+        }
 
+        stage('top'){
+            steps{
+                sh '''
+                    ps -eaf | head -10
+                '''
+            }
+        }
+    }
 }
