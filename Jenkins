@@ -3,14 +3,11 @@ pipeline{
   Stages{
     stage('Hostaname'){
       steps{
-      sh ...
        hostname
-        ...
       }
     }
     stage('Top'){
       steps{
-       sh ...
         top | head -10
       }
     }
