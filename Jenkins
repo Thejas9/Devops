@@ -11,6 +11,6 @@ pipeline{
         top | head -10
       }
     }
-}
+  }
 
 }
